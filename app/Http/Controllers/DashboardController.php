@@ -50,11 +50,11 @@ class DashboardController extends Controller
         // 최근 7일간 일별 참여 팀원 수
         $sevenDaysAgo = $now->copy()->subDays(6)->startOfDay();
         $dailyParticipation = StandupNote::select(
-                DB::raw("date as note_date"),
+                DB::raw("DATE(date) as note_date"),
                 DB::raw('COUNT(DISTINCT team_member_id) as participant_count')
             )
             ->where('date', '>=', $sevenDaysAgo->toDateString())
-            ->groupBy('note_date')
+            ->groupBy(DB::raw('DATE(date)'))
             ->pluck('participant_count', 'note_date')
             ->toArray();
 

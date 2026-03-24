@@ -139,7 +139,7 @@ function MemberTable({ members }) {
                                                 >
                                                     {member.name.charAt(0)}
                                                 </div>
-                                                <span className="font-medium text-gray-900">{member.name}</span>
+                                                <span className="whitespace-nowrap font-medium text-gray-900">{member.name}</span>
                                             </div>
                                         </td>
                                         <td className="py-3 text-gray-500">{member.role}</td>
@@ -217,11 +217,11 @@ export default function Dashboard({ stats, dailyChart, memberParticipation }) {
                     </div>
 
                     {/* Chart & Table */}
-                    <div className="mt-8 grid grid-cols-1 gap-6 lg:grid-cols-3">
-                        <div className="lg:col-span-2">
+                    <div className="mt-8 grid grid-cols-1 gap-6 lg:grid-cols-2">
+                        <div>
                             <DailyChart data={dailyChart} totalMembers={stats.totalMembers} />
                         </div>
-                        <div className="lg:col-span-1">
+                        <div>
                             <MemberTable members={memberParticipation} />
                         </div>
                     </div>
